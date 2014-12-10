@@ -1,0 +1,92 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+class node{
+      
+      public : 
+           int key;
+           node *ptr;
+      node (int k){
+           key = k;
+           ptr = NULL;  
+           }          
+};
+
+class stack{
+  public : 
+     
+     node *head;
+     stack () { 
+            head = NULL;     
+           }   
+          
+void push(int a){
+  
+     if ( head == NULL ){
+          node *new_node = new node(a);
+          head = new_node;
+        }
+     else{
+          node *another = new node(a);
+          another->ptr = head;
+          head = another;
+        }
+   }
+void remove_duplicate(){
+     node *one = head;
+     node *two = head->ptr;
+     node *list = head;
+     cout << " head key " << head->ptr->key;
+                   
+     while (two->ptr != NULL){
+         if ( one->key == two->key){
+                    node *temp = two->ptr;  
+                    //two = two->ptr;  
+                    one->ptr =temp;  
+                    //delete two->ptr;  
+                  // continue; 
+cout << "\ndeleted key" << temp->key;
+                }
+            else{
+               one = one->ptr;
+                 two = two->ptr;
+                                        
+                 } 
+                      
+      }
+ 
+}
+
+void traverse(){
+          
+         node *traverse = head;
+         cout << "\n" ;
+         cout << " head key " << head->ptr->key;
+         while ( traverse->ptr != NULL) {
+                // cout << traverse->ptr->key;
+                   traverse = traverse->ptr;
+                   cout << traverse->key;
+         }
+
+}
+
+};
+
+
+int main (){
+ 
+    stack a;
+    a.push(1);
+    a.push(2);
+    a.push(2);
+    a.push(2);
+    a.push(5);
+    a.push(6);
+ //a.traverse();
+ a.remove_duplicate();
+ a.traverse();
+ getch();
+    return 0;   
+    
+}
