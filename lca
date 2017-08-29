@@ -1,0 +1,23 @@
+node* lowestcommon(node* root, int a, intb){
+    
+    if (root == NULL) {
+        return NULL;
+    }
+    
+    if (root->left == NULL) && (root->right == NULL) 
+        return NULL;
+        
+    if ((root->data == a) || (root ->data == b))
+            return root;
+
+    node* left = lowestcommon(root->left,int a, int b);
+    node* right = lowestcommon(root->right,int a, int b);
+    
+    if (left && right) return root; 
+    
+    if (left)
+        return left;
+    else 
+        return right;
+
+}
