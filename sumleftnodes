@@ -1,0 +1,19 @@
+int sumleftleaves(node* root){
+    
+    int res = 0;
+    
+    if (root==NULL)
+        return res;;
+    
+    if ((root->left!=NULL) && hasnochildren(root->left))
+        return res += root->left->data;
+     
+    int res1 = 0;
+    int res2 = 0;
+        
+    res1 += sumleftleaves(root->left);
+    res2 += sumleftleaves(root->right);
+    
+    return res1+res2;
+    
+}
