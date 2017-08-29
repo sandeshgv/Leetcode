@@ -1,0 +1,14 @@
+bool isSibling(node* root, int a, int b){
+    
+    if (root==NULL)
+        return false;
+    
+    if ((root->left == NULL) && (root->right == NULL))
+        return false;
+      
+    if (((root->left->data == a) && (root->right->data == b)) || ((root->left->data == b) && (root->right->data == a)))
+        return true;
+    
+    return ((isSibling(root->left,a,b)) || (isSibling(root->right,a,b)));
+
+}
