@@ -1,0 +1,15 @@
+bool issum(node* root,int sum){
+    
+    if(root == NULL)
+        return 0;
+    
+    if (root->left)
+        return (root->data+root->left->data == sum ? true : false);
+    
+    if (root->right)
+        return (root->data+root->right->data == sum ? true : false);
+    
+    return (issum(root->left,sum) || issum(root->right,sum));
+    
+    
+}
