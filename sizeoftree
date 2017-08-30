@@ -1,0 +1,11 @@
+int sizeoftree(node* root){
+    
+    if(root == NULL)
+        return 0;
+        
+    int a = sizeoftree(root->left);
+    int b = sizeoftree(root->right);
+    
+    return a+b+1;
+    
+}
