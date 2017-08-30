@@ -1,0 +1,56 @@
+*******************************************************************************/
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Collections;
+
+public class Main 
+{
+	
+	static boolean isanagram(String s1, String s2){
+
+        boolean status = true;
+ 
+        if(s1.length() != s2.length())
+        {
+
+            return  false;
+        }
+        else
+        {
+            char[] s1Array = s1.toLowerCase().toCharArray();
+            char[] s2Array = s2.toLowerCase().toCharArray();
+            Arrays.sort(s1Array);
+            Arrays.sort(s2Array);
+            return  Arrays.equals(s1Array, s2Array);
+        }
+ 
+    }
+	    
+
+	public static void main(String[] args) {
+	    
+	    String str = "cat,bat,mat,act,tab,abt";
+	    List<String> items = Arrays.asList(str.split("\\s*,\\s*"));
+        
+        for (int i= 0; i < items.size() ; i++){
+            boolean first = true;
+            List<String> strlist = new ArrayList<String>();
+            for (int j = i ; j < items.size() ; j++){
+                if (!(items.get(i).equals(items.get(j)))){
+                    if (isanagram(items.get(i),items.get(j))){
+                        if (first){
+                            strlist.add(items.get(i));
+                        }
+                        strlist.add(items.get(j));
+                    }
+                } 
+            }
+            Collections.sort(strlist);
+            for (int k = 0; k < strlist.size() ; k++)
+            System.out.println(strlist.get(k));
+        }
+            
+	}
+}
