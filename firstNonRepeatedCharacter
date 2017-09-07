@@ -1,0 +1,33 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+
+public class Main {
+    
+    public static void main(String[] args)
+    {
+        String s="geeksforgeeks";
+        char c=firstNonRepeatedCharacter(s);
+        System.out.println("The first non repeated character is :  " + c);
+    }
+    
+    public static Character firstNonRepeatedCharacter(String str)
+    {
+        HashMap<Character,Integer>  hmap = new HashMap<Character ,Integer>();
+
+        for (Integer i=0; i < str.length(); i++)
+        {
+            if(hmap.containsKey(str.charAt(i)))
+                hmap.put(str.charAt(i), hmap.get(str.charAt(i)) +1 );
+            else
+                hmap.put( str.charAt(i) , 1 ) ;
+        }
+
+        for (Integer i =0 ; i < str.length() ; i++ )
+        {
+            if(hmap.get(str.charAt(i))  == 1 )
+            return str.charAt(i);
+        }
+        return null ;
+    }
+} 
